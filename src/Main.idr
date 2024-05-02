@@ -1,7 +1,7 @@
 module Main
 
 import P5Idr.Setup
-import P5Idr.Canvas
+import P5Idr.Rendering
 
 setup : IO ()
 setup = P5Idr.Setup.setup $ do 

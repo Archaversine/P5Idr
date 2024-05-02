@@ -1,4 +1,4 @@
-module P5Idr.Canvas
+module P5Idr.Rendering
 
 %foreign "javascript:lambda:(w,h)=>createCanvas(w,h)"
 prim__createCanvas : Int -> Int -> PrimIO ()
