@@ -27,6 +27,7 @@ draw xRef = P5Idr.Setup.draw $ do
     stroke (Gray 255)
     fill (RGB 255 0 0)
     rect (MkRect x 10 50 50)
+    ellipse (MkCircle (x + 25) 100 50)
 
     if x > width then writeRef xRef (-50) else writeRef xRef (x + 1)
 
