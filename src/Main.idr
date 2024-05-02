@@ -3,6 +3,7 @@ module Main
 import P5Idr.Setup
 import P5Idr.Rendering
 import P5Idr.Color
+import P5Idr.Shape
 
 setup : IO ()
 setup = P5Idr.Setup.setup $ do 
@@ -17,6 +18,9 @@ setup = P5Idr.Setup.setup $ do
 draw : IO ()
 draw = P5Idr.Setup.draw $ do 
     background (Gray 0)
+
+    fill (RGB 255 0 0)
+    rect (MkRect 10 10 50 50)
 
 main : IO ()
 main = setup *> draw

@@ -33,3 +33,33 @@ prim__getHeight : PrimIO Integer
 export 
 getHeight : (HasIO io, Num ty) => io ty 
 getHeight = fromInteger <$> primIO prim__getHeight
+
+%foreign "javascript:lambda:(r,g,b,a)=>fill(color(r,g,b,a))" 
+prim__fill : Bits8 -> Bits8 -> Bits8 -> Bits8 -> PrimIO () 
+
+export 
+fill : HasIO io => Color -> io () 
+fill color = let (r, g, b, a) = colorToTuple color in 
+    primIO $ prim__fill r g b a
+
+%foreign "javascript:lambda:()=>noFill()"
+prim__noFill : PrimIO ()
+
+export 
+noFill : HasIO io => io ()
+noFill = primIO prim__noFill
+
+%foreign "javascript:lambda:(r,g,b,a)=>stroke(color(r,g,b,a))"
+prim__stroke : Bits8 -> Bits8 -> Bits8 -> Bits8 -> PrimIO () 
+
+export 
+stroke : HasIO io => Color -> io () 
+stroke color = let (r, g, b, a) = colorToTuple color in 
+    primIO $ prim__stroke r g b a
+
+%foreign "javascript:lambda:()=>noStroke()" 
+prim__noStroke : PrimIO () 
+
+export 
+noStroke : HasIO io => io () 
+noStroke = primIO prim__noStroke
