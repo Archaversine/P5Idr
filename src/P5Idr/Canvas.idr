@@ -4,5 +4,5 @@ module P5Idr.Canvas
 prim__createCanvas : Int -> Int -> PrimIO ()
 
 export 
-createCanvas : HasIO io => Nat -> Nat -> io ()
+createCanvas : HasIO io => (width : Nat) -> (height : Nat) -> io ()
 createCanvas w h = primIO $ prim__createCanvas (cast w) (cast h)
