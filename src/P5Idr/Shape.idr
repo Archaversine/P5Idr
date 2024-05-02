@@ -18,7 +18,7 @@ rect r = let (x, y, w, h, b) = rectToTuple r in primIO $ prim__rect x y w h b
 
 public export 
 data Ellipse : Type where
-    MkCircle   : (x, y, r : Double)    -> Ellipse
+    MkCircle   : (x, y, r    : Double) -> Ellipse
     MkEllipse  : (x, y, w, h : Double) -> Ellipse
     MkEllipseV : (x, y, w, h : Double) -> (v : Nat) -> Ellipse
 
