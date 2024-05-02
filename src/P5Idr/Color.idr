@@ -63,3 +63,10 @@ prim__noStroke : PrimIO ()
 export 
 noStroke : HasIO io => io () 
 noStroke = primIO prim__noStroke
+
+%foreign "javascript:lambda:w=>strokeWeight(w)"
+prim__strokeWeight : Bits8 -> PrimIO ()
+
+export 
+strokeWeight : HasIO io => Bits8 -> io () 
+strokeWeight w = primIO $ prim__strokeWeight w

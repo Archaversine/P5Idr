@@ -19,6 +19,7 @@ draw : IO ()
 draw = P5Idr.Setup.draw $ do 
     background (Gray 0)
 
+    stroke (Gray 255)
     fill (RGB 255 0 0)
     rect (MkRect 10 10 50 50)
 
