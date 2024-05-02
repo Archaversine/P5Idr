@@ -6,11 +6,29 @@ data Color : Type where
     RGB  : (r, g, b : Bits8)    -> Color
     RGBA : (r, g, b, a : Bits8) -> Color
 
+    Red     : Color
+    Orange  : Color
+    Yellow  : Color
+    Green   : Color 
+    Blue    : Color 
+    Magenta : Color
+    White   : Color
+    Black   : Color
+
 export 
 colorToTuple : Color -> (Bits8, Bits8, Bits8, Bits8)
-colorToTuple (Gray gray)    = (gray, gray, gray, 255)
-colorToTuple (RGB r g b)    = (r, g, b, 255) 
-colorToTuple (RGBA r g b a) = (r, g, b, a)
+colorToTuple c = case c of 
+    Gray g       => (g  , g  , g  , 255)
+    RGB  r g b   => (r  , g  , b  , 255)
+    RGBA r g b a => (r  , g  , b  , a  )
+    Red          => (255, 0  , 0  , 255)
+    Orange       => (255, 165, 0  , 255)
+    Yellow       => (255, 255, 0  , 255)
+    Green        => (0  , 255, 0  , 255)
+    Blue         => (0  , 0  , 255, 255)
+    Magenta      => (255, 0  , 255, 255)
+    White        => (255, 255, 255, 255)
+    Black        => (0  , 0  , 0  , 255)
 
 %foreign "javascript:lambda:(r,g,b,a)=>background(color(r,g,b,a))"
 prim__background : Bits8 -> Bits8 -> Bits8 -> Bits8 -> PrimIO ()
