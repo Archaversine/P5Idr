@@ -2,8 +2,8 @@ module P5Idr.Color
 
 public export
 data Color : Type where 
-    Gray : (gray : Bits8)       -> Color
-    RGB  : (r, g, b : Bits8)    -> Color
+    Gray : (gray       : Bits8) -> Color
+    RGB  : (r, g, b    : Bits8) -> Color
     RGBA : (r, g, b, a : Bits8) -> Color
 
     Red     : Color
