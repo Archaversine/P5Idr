@@ -15,6 +15,20 @@ data Color : Type where
     White   : Color
     Black   : Color
 
+Eq Color where 
+    Gray g1          == Gray g2          = g1 == g2
+    RGB  r1 g1 b1    == RGB  r2 g2 b2    = r1 == r2 && g1 == g2 && b1 == b2
+    RGBA r1 g1 b1 a1 == RGBA r2 g2 b2 a2 = r1 == r2 && g1 == g2 && b1 == b2 && a1 == a2
+    Red              == Red              = True
+    Orange           == Orange           = True
+    Yellow           == Yellow           = True
+    Green            == Green            = True
+    Blue             == Blue             = True
+    Magenta          == Magenta          = True
+    White            == White            = True
+    Black            == Black            = True
+    _                == _                = False
+
 export 
 colorToTuple : Color -> (Bits8, Bits8, Bits8, Bits8)
 colorToTuple c = case c of 
