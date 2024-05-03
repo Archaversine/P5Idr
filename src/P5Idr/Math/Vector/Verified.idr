@@ -1,6 +1,6 @@
-module P5Idr.Math.Verified 
+module P5Idr.Math.Vector.Verified 
 
-import P5Idr.Math.Types
+import P5Idr.Math.Vector.Types
 
 import Decidable.Equality
 

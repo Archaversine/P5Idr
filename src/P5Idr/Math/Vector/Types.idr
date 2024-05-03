@@ -1,4 +1,4 @@
-module P5Idr.Math.Types
+module P5Idr.Math.Vector.Types
 
 %default total
 
