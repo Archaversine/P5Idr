@@ -133,7 +133,10 @@ eqAddVec2Vec3 x1 y1 x2 y2 = Refl
 export 0
 distVec2Vec3 : (x1, y1, x2, y2 : Double) 
     -> dist (Vector2 x1 y1) (Vector2 x2 y2) = dist (Vector3 x1 y1 0) (Vector3 x2 y2 0)
-distVec2Vec3 x1 y1 x2 y2 = Refl
+distVec2Vec3 x1 y1 x2 y2 = do
+    rewrite plusDoubleComm ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2)) 0
+    rewrite plusDoubleZero ((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))
+    Refl
 
 -- Cannot be verified because the actual definition of dist is a javascript function
 -- Though it can be safely assume that this is true

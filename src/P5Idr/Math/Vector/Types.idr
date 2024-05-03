@@ -29,15 +29,12 @@ Num PVector where
 
     fromInteger i = let x = fromInteger i in Vector3 x x x
 
-%foreign "javascript:lambda:(x1,y1,z1,x2,y2,z2)=>dist(x1,y1,z1,x2,y2,z2)"
-prim__dist : (x1, y1, z1, x2, y2, z2 : Double) -> Double
-
 public export
 dist : PVector -> PVector -> Double
-dist (Vector2 x1 y1)    (Vector2 x2 y2)    = prim__dist x1 y1 0  x2 y2 0
-dist (Vector2 x1 y1)    (Vector3 x2 y2 z2) = prim__dist x1 y1 0  x2 y2 z2
-dist (Vector3 x1 y1 z1) (Vector2 x2 y2)    = prim__dist x1 y1 z1 x2 y2 0
-dist (Vector3 x1 y1 z1) (Vector3 x2 y2 z2) = prim__dist x1 y1 z1 x2 y2 z2
+dist (Vector2 x1 y1)    (Vector2 x2 y2)    = sqrt ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2))
+dist (Vector2 x1 y1)    (Vector3 x2 y2 z2) = sqrt ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + z2 * z2)
+dist (Vector3 x1 y1 z1) (Vector2 x2 y2)    = sqrt ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + z1 * z1)
+dist (Vector3 x1 y1 z1) (Vector3 x2 y2 z2) = sqrt ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2))
 
 public export
 mag : PVector -> Double
