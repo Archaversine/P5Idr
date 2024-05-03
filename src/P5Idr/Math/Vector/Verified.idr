@@ -99,6 +99,7 @@ distVecComm (Vector3 x1 y1 z1) (Vector3 x2 y2 z2) = do
 
 export 0 
 magVec3_1 : (x, y, z : Double) -> mag (Vector3 x y z) = mag (Vector3 y x z)
+magVec3_1 x y z = rewrite plusDoubleComm (x * x) (y * y) in Refl
 
 export 0 
 magVec3_2 : (x, y, z : Double) -> mag (Vector3 x y z) = mag (Vector3 z y x) 
