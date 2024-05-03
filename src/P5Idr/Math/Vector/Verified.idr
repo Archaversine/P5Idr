@@ -47,6 +47,9 @@ plusDoubleZero x = believe_me x
 0 multDoubleOne : (x : Double) -> 1 * x = x
 multDoubleOne x = believe_me x
 
+0 minusDoubleZero : (x : Double) -> x - 0 = x 
+minusDoubleZero x = believe_me x
+
 export 0 
 plusPVecZero : (x, y, z : Double) -> Vector3 0 0 0 + Vector3 x y z = Vector3 x y z
 plusPVecZero x y z = do 
@@ -62,6 +65,15 @@ multPVecOne x y z = do
     rewrite multDoubleOne x 
     rewrite multDoubleOne y 
     rewrite multDoubleOne z
+
+    Refl
+
+export 0
+minusPVecZero : (x, y, z : Double) -> Vector3 x y z - Vector3 0 0 0 = Vector3 x y z
+minusPVecZero x y z = do 
+    rewrite minusDoubleZero x 
+    rewrite minusDoubleZero y 
+    rewrite minusDoubleZero z
 
     Refl
 

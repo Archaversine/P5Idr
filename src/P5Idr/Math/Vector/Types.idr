@@ -29,6 +29,16 @@ Num PVector where
 
     fromInteger i = let x = fromInteger i in Vector3 x x x
 
+export 
+Neg PVector where
+    negate (Vector2 x y)   = Vector2 (-x) (-y)
+    negate (Vector3 x y z) = Vector3 (-x) (-y) (-z)
+
+    Vector3 x1 y1 z1 - Vector3 x2 y2 z2 = Vector3 (x1 - x2) (y1 - y2) (z1 - z2) 
+    Vector3 x1 y1 z1 - Vector2 x2 y2    = Vector3 (x1 - x2) (y1 - y2) z1 
+    Vector2 x1 y1    - Vector3 x2 y2 z2 = Vector3 (x1 - x2) (y1 - y2) (-z2) 
+    Vector2 x1 y1    - Vector2 x2 y2    = Vector2 (x1 - x2) (y1 - y2)
+
 public export
 dist : PVector -> PVector -> Double
 dist (Vector2 x1 y1)    (Vector2 x2 y2)    = sqrt ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2))
