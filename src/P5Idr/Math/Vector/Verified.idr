@@ -143,6 +143,14 @@ magVec3_5 x y z = do
 
 export 0 
 magVec3_6 : (x, y, z : Double) -> mag (Vector3 x y z) = mag (Vector3 z y x)
+magVec3_6 x y z = do 
+    rewrite plusDoubleComm (z * z) (y * y) 
+    rewrite sym (plusDoubleAssoc (y * y) (z * z) (x * x))
+    rewrite plusDoubleComm (z * z) (x * x)
+    rewrite plusDoubleAssoc (y * y) (x * x) (z * z)
+    rewrite plusDoubleComm (y * y) (x * x)
+
+    Refl
 
 -- //////////////////////////////
 -- // VEC NORMALIZATION VERIF //
