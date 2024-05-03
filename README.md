@@ -1,12 +1,18 @@
 # P5Idr 
 
+## What is p5.js?
+
 p5.js is a JS client-side library for creating graphic and interactive experiences, based on the core 
 principles of Processing.
+
+## What does P5Idr do?
 
 P5Idr aims to prove access to this library through the programming language Idris to allow for creative 
 coding. Currently, this library is still a work in progress, but has plans to eventually provide bindings 
 for all p5.js functions along with various proofs to allow for experimentation with theorem proving without
 deriving everything from the ground up.
+
+## Example Usage
 
 Below is an example of a basic sketch that moves a rectangle across the screen. (NOTE: Because this is still
 a work in progress, all of this is subject to change at any time):
