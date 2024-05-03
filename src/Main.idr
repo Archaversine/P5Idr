@@ -2,10 +2,7 @@ module Main
 
 import Data.Ref
 
-import P5Idr.Setup
-import P5Idr.Rendering
-import P5Idr.Color
-import P5Idr.Shape
+import P5Idr
 
 setup : IO ()
 setup = P5Idr.Setup.setup $ do 
