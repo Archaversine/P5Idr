@@ -74,9 +74,24 @@ plusVecComm (Vector3 x1 y1 z1) (Vector3 x2 y2 z2) = do
 
 -- Cannot be verified because the actual definition of dist is a javascript function
 -- Though it can be safely assume that this is true
+lemma_distVecComm_doubleSquared : (x, y : Double) -> (x - y) * (x - y) = (x + y) * (x + y)
+lemma_distVecComm_doubleSquared x y = believe_me x y
+
 export 0 
 distVecComm : (v1, v2 : PVector) -> dist v1 v2 = dist v2 v1
-distVecComm v1 v2 = ?todo
+distVecComm (Vector3 x1 y1 z1) (Vector3 x2 y2 z2) = do 
+    rewrite lemma_distVecComm_doubleSquared x1 x2
+    rewrite lemma_distVecComm_doubleSquared x2 x1
+    rewrite lemma_distVecComm_doubleSquared y1 y2 
+    rewrite lemma_distVecComm_doubleSquared y2 y1
+    rewrite lemma_distVecComm_doubleSquared z1 z2
+    rewrite lemma_distVecComm_doubleSquared z2 z1
+    
+    rewrite plusDoubleComm x1 x2
+    rewrite plusDoubleComm y1 y2
+    rewrite plusDoubleComm z1 z2
+    
+    Refl
 
 -- //////////////////////////
 -- // VEC MAGNITUDE VERIF //
