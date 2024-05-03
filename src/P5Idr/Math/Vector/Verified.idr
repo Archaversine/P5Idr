@@ -123,6 +123,13 @@ magVec3_3 x y z = do
 
 export 0 
 magVec3_4 : (x, y, z : Double) -> mag (Vector3 x y z) = mag (Vector3 y z x) 
+magVec3_4 x y z = do 
+    rewrite sym (plusDoubleAssoc (y * y) (z * z) (x * x))
+    rewrite plusDoubleComm (z * z) (x * x)
+    rewrite plusDoubleAssoc (y * y) (x * x) (z * z)
+    rewrite plusDoubleComm (y * y) (x * x)
+
+    Refl
 
 export 0 
 magVec3_5 : (x, y, z : Double) -> mag (Vector3 x y z) = mag (Vector3 z x y) 
