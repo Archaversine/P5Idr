@@ -44,14 +44,26 @@ plusDoubleComm x y = believe_me x y
 0 plusDoubleZero : (x : Double) -> 0 + x = x
 plusDoubleZero x = believe_me x
 
-0 squareDoubleFrac : (x, y : Double) -> (x/y) * (x/y) = (x * x) / (y * y)
-squareDoubleFrac x y = believe_me x y
+0 multDoubleOne : (x : Double) -> 1 * x = x
+multDoubleOne x = believe_me x
 
-0 sqrtSquareDouble : (x : Double) -> sqrt x * sqrt x = x
-sqrtSquareDouble x = believe_me x 
+export 0 
+plusPVecZero : (x, y, z : Double) -> Vector3 0 0 0 + Vector3 x y z = Vector3 x y z
+plusPVecZero x y z = do 
+    rewrite plusDoubleZero x 
+    rewrite plusDoubleZero y 
+    rewrite plusDoubleZero z
 
-0 divId1 : (x : Double) -> x / x = 1
-divId1 x = believe_me x
+    Refl
+
+export 0 
+multPVecOne : (x, y, z : Double) -> Vector3 1 1 1 * Vector3 x y z = Vector3 x y z 
+multPVecOne x y z = do 
+    rewrite multDoubleOne x 
+    rewrite multDoubleOne y 
+    rewrite multDoubleOne z
+
+    Refl
 
 export 0 
 plusPVecAssoc : (v1, v2, v3 : PVector) -> v1 + (v2 + v3) = (v1 + v2) + v3
