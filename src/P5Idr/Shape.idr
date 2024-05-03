@@ -1,6 +1,19 @@
 module P5Idr.Shape
 
 public export
+data ArcType = Chord | Pie | Open
+
+%foreign "javascript:lambda:(x,y,w,h,start,stop,m,d)=>arc(x,y,w,h,start,stop,m,d)"
+prim__arc : (x, y, w, h, start, stop : Double) -> (m : String) -> (d : Nat) -> PrimIO ()
+
+export
+arc : HasIO io => (x, y, w, h, start, stop : Double) -> ArcType -> io ()
+arc x y w h start stop arcType = case arcType of 
+    Chord => primIO $ prim__arc x y w h start stop "CHORD" 0
+    Pie   => primIO $ prim__arc x y w h start stop "PIE" 0
+    Open  => primIO $ prim__arc x y w h start stop "OPEN" 0
+
+public export
 data Rect : Type where 
     MkRect : (x, y, w, h : Double) -> Rect
     MkRoundRect : (x, y, w, h, b : Double) -> Rect
